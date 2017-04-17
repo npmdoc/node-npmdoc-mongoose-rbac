@@ -1,0 +1,1456 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/bryandragon/mongoose-rbac"
+
+    >mongoose-rbac (v0.1.3)</a>
+</h1>
+<h4>Role-based access control for mongoose apps.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac">module mongoose-rbac</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission
+            <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission.findOrCreate">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission.findOrCreate
+            <span class="apidocSignatureSpan">(params, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission.model">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission.model
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role
+            <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.can">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role.prototype.can
+            <span class="apidocSignatureSpan">(action, subject, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.canAll">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role.prototype.canAll
+            <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.canAny">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role.prototype.canAny
+            <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.init">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>init
+            <span class="apidocSignatureSpan">(rolesAndPermissions, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.plugin">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>plugin
+            <span class="apidocSignatureSpan">(schema, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.</span>Role.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Permission">module mongoose-rbac.Permission</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission.Permission">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission
+            <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission.findOrCreate">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>findOrCreate
+            <span class="apidocSignatureSpan">(params, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission.model">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>model
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>base</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>collection</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>db</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>schema</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>modelName</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Permission.findOrCreate">module mongoose-rbac.Permission.findOrCreate</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission.findOrCreate.findOrCreate">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>findOrCreate
+            <span class="apidocSignatureSpan">(params, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Permission.model">module mongoose-rbac.Permission.model</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Permission.model.model">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>model
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Role">module mongoose-rbac.Role</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.Role">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role
+            <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.model">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Role.</span>model
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Role.</span>base</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Role.</span>collection</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Role.</span>db</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Role.</span>schema</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mongoose-rbac.Role.</span>modelName</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Role.prototype">module mongoose-rbac.Role.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.can">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>can
+            <span class="apidocSignatureSpan">(action, subject, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.canAll">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAll
+            <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.canAny">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAny
+            <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>collection</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>db</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>schema</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Role.prototype.can">module mongoose-rbac.Role.prototype.can</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.can.can">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>can
+            <span class="apidocSignatureSpan">(action, subject, done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Role.prototype.canAll">module mongoose-rbac.Role.prototype.canAll</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.canAll.canAll">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAll
+            <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.Role.prototype.canAny">module mongoose-rbac.Role.prototype.canAny</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.Role.prototype.canAny.canAny">
+            function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAny
+            <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.init">module mongoose-rbac.init</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.init.init">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>init
+            <span class="apidocSignatureSpan">(rolesAndPermissions, done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mongoose-rbac.plugin">module mongoose-rbac.plugin</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mongoose-rbac.plugin.plugin">
+            function <span class="apidocSignatureSpan">mongoose-rbac.</span>plugin
+            <span class="apidocSignatureSpan">(schema, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac" id="apidoc.module.mongoose-rbac">module mongoose-rbac</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission" id="apidoc.element.mongoose-rbac.Permission">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission
+        <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(doc, fields, skipId) {
+  if (!(this instanceof model))
+    return new model(doc, fields, skipId);
+  Model.call(this, doc, fields, skipId);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission.findOrCreate" id="apidoc.element.mongoose-rbac.Permission.findOrCreate">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission.findOrCreate
+        <span class="apidocSignatureSpan">(params, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Permission.findOrCreate = function (params, callback) {
+  var that = this;
+
+  function findOrCreateOne(params, callback) {
+    that.findOne(params, function (err, permission) {
+      if (err) return callback(err);
+      if (permission) return callback(null, permission);
+      that.create(params, callback);
+    });
+  }
+
+  if (Array.isArray(params)) {
+    var permissions = [];
+    async.forEachSeries(params, function (param, next) {
+      findOrCreateOne(param, function (err, permission) {
+        permissions.push(permission);
+        next(err);
+      });
+    }, function (err) {
+      callback.apply(null, [err].concat(permissions));
+    });
+  }
+  else {
+    findOrCreateOne(params, callback);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission.model" id="apidoc.element.mongoose-rbac.Permission.model">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission.model
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(name) {
+  return this.db.model(name);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role" id="apidoc.element.mongoose-rbac.Role">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role
+        <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(doc, fields, skipId) {
+  if (!(this instanceof model))
+    return new model(doc, fields, skipId);
+  Model.call(this, doc, fields, skipId);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.can" id="apidoc.element.mongoose-rbac.Role.prototype.can">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role.prototype.can
+        <span class="apidocSignatureSpan">(action, subject, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Role.prototype.can = function (action, subject, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ALL, [[action, subject]], done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.canAll" id="apidoc.element.mongoose-rbac.Role.prototype.canAll">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role.prototype.canAll
+        <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Role.prototype.canAll = function (actionsAndSubjects, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ALL, actionsAndSubjects, done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.canAny" id="apidoc.element.mongoose-rbac.Role.prototype.canAny">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role.prototype.canAny
+        <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Role.prototype.canAny = function (actionsAndSubjects, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ANY, actionsAndSubjects, done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.init" id="apidoc.element.mongoose-rbac.init">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>init
+        <span class="apidocSignatureSpan">(rolesAndPermissions, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function init(rolesAndPermissions, done) {
+  var count = Object.keys(rolesAndPermissions).length
+    , roles = []
+    , promise = new mongoose.Promise(done);
+  for (var name in rolesAndPermissions) {
+    var len, role;
+    // Convert [action, subject] arrays to objects
+    len = rolesAndPermissions[name].length;
+    for (var i = 0; i &#x3c; len; i++) {
+      if (Array.isArray(rolesAndPermissions[name][i])) {
+        rolesAndPermissions[name][i] = {
+          action: rolesAndPermissions[name][i][0],
+          subject: rolesAndPermissions[name][i][1]
+        };
+      }
+    }
+    // Create role
+    role = new Role({ name: name });
+    roles.push(role);
+    role.save(function (err, role) {
+      if (err) return promise.error(err);
+      // Create role&#x27;s permissions if they do not exist
+      Permission.findOrCreate(rolesAndPermissions[role.name], function (err) {
+        if (err) return promise.error(err);
+        // Add permissions to role
+        role.permissions = Array.prototype.slice.call(arguments, 1);
+        // Save role
+        role.save(function (err) {
+          if (err) return promise.error(err);
+          --count || done.apply(null, [err].concat(roles));
+        });
+      });
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Alternatively we can use `init` to easily bootstrap roles and permissions:
+
+```javascript
+// permissions.js
+
+var rbac = require(&#x27;mongoose-rbac&#x27;);
+
+rbac.<span class="apidocCodeKeywordSpan">init</span>({
+admin: [
+  [&#x27;create&#x27;, &#x27;Post&#x27;],
+  [&#x27;read&#x27;, &#x27;Post&#x27;],
+  [&#x27;update&#x27;, &#x27;Post&#x27;],
+  [&#x27;delete&#x27;, &#x27;Post&#x27;]
+],
+readonly: [
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.plugin" id="apidoc.element.mongoose-rbac.plugin">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>plugin
+        <span class="apidocSignatureSpan">(schema, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function plugin(schema, options) {
+  options || (options = {});
+
+  schema.add({
+    roles: [{ type: mongoose.Schema.Types.ObjectId, ref: &#x27;Role&#x27; }]
+  });
+
+  schema.methods.hasRole = function (role, done) {
+    var obj = this;
+    resolveRole(role, function (err, role) {
+      if (err) return done(err);
+      var hasRole = false;
+      obj.roles.forEach(function (existing) {
+        if ((existing._id &#x26;&#x26; existing._id.equals(role._id)) ||
+              (existing.toString() === role.id)) {
+          hasRole = true;
+        }
+      });
+      done(null, hasRole);
+    });
+  };
+
+  schema.methods.addRole = function (role, done) {
+    var obj = this;
+    resolveRole(role, function (err, role) {
+      if (err) return done(err);
+      obj.hasRole(role, function (err, has) {
+        if (err) return done(err);
+        if (has) return done(null, obj);
+        obj.roles = [role._id].concat(obj.roles);
+        obj.save(done);
+      });
+    });
+  };
+
+  schema.methods.removeRole = function (role, done) {
+    var obj = this;
+    resolveRole(role, function (err, role) {
+      obj.hasRole(role.name, function (err, has) {
+        if (err) return done(err);
+        if (!has) return done(null);
+        var index = obj.roles.indexOf(role._id);
+        obj.roles.splice(index, 1);
+        obj.save(done);
+      });
+    });
+  };
+
+  schema.methods.can = function (action, subject, done) {
+    var obj = this;
+    obj.populate(&#x27;roles&#x27;, function (err, obj) {
+      if (err) return done(err);
+      var hasPerm = false;
+      if (obj.roles) {
+        async.forEachSeries(obj.roles, function (role, next) {
+          role.can(action, subject, function (err, has) {
+            if (err) return next(err);
+            if (has) hasPerm = true;
+            next();
+          });
+        }, function (err) {
+          done(err, hasPerm);
+        });
+      }
+      else {
+        done(null, hasPerm);
+      }
+    });
+  };
+
+  schema.methods.canAll = function (actionsAndSubjects, done) {
+    var obj = this;
+    obj.populate(&#x27;roles&#x27;, function (err, obj) {
+      if (err) return done(err);
+      var count = 0, hasAll = false;
+      if (obj.roles) {
+        async.forEachSeries(actionsAndSubjects, function (as, nextPerm) {
+          var found = false;
+          async.forEachSeries(obj.roles, function (role, nextRole) {
+            role.can(as[0], as[1], function (err, has) {
+              if (err) return nextRole(err);
+              if (!found &#x26;&#x26; has) {
+                found = true;
+                count++;
+              }
+              nextRole();
+            });
+          }, function (err) {
+            nextPerm(err);
+          });
+        }, function (err) {
+          hasAll = (count === actionsAndSubjects.length);
+          done(err, hasAll);
+        });
+      }
+      else {
+        done(null, hasAll);
+      }
+    });
+  };
+
+  schema.methods.canAny = function (actionsAndSubjects, done) {
+    var obj = this;
+    obj.populate(&#x27;roles&#x27;, function (err, obj) {
+      if (err) return done(err);
+      var hasAny = false;
+      if (obj.roles) {
+        var iter = 0;
+        async.until(
+          function () {
+            return hasAny || iter === obj.roles.length;
+          },
+          function (callback) {
+            obj.roles[iter].canAny(actionsAndSubjects, function (err, has) {
+              if (err) return callback(err);
+              if (has) hasAny = true;
+              iter++;
+              callback();
+            });
+          },
+          function (err) {
+            done(err, hasAny);
+          });
+      }
+      else {
+        done(null, hasAny);
+      }
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  , User;
+
+UserSchema = mongoose.Schema({
+  username: String,
+  passwordHash: String
+});
+
+UserSchema.<span class="apidocCodeKeywordSpan">plugin</span>(rbac.plugin);
+
+module.exports = mongoose.model(&#x27;User&#x27;, UserSchema);
+```
+
+Finally, we can assign roles to our users and control their access to system resources:
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Permission" id="apidoc.module.mongoose-rbac.Permission">module mongoose-rbac.Permission</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission.Permission" id="apidoc.element.mongoose-rbac.Permission.Permission">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Permission
+        <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(doc, fields, skipId) {
+  if (!(this instanceof model))
+    return new model(doc, fields, skipId);
+  Model.call(this, doc, fields, skipId);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission.findOrCreate" id="apidoc.element.mongoose-rbac.Permission.findOrCreate">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>findOrCreate
+        <span class="apidocSignatureSpan">(params, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">findOrCreate = function (params, callback) {
+  var that = this;
+
+  function findOrCreateOne(params, callback) {
+    that.findOne(params, function (err, permission) {
+      if (err) return callback(err);
+      if (permission) return callback(null, permission);
+      that.create(params, callback);
+    });
+  }
+
+  if (Array.isArray(params)) {
+    var permissions = [];
+    async.forEachSeries(params, function (param, next) {
+      findOrCreateOne(param, function (err, permission) {
+        permissions.push(permission);
+        next(err);
+      });
+    }, function (err) {
+      callback.apply(null, [err].concat(permissions));
+    });
+  }
+  else {
+    findOrCreateOne(params, callback);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission.model" id="apidoc.element.mongoose-rbac.Permission.model">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>model
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(name) {
+  return this.db.model(name);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+UserSchema = mongoose.Schema({
+username: String,
+passwordHash: String
+});
+
+UserSchema.plugin(rbac.plugin);
+
+module.exports = mongoose.<span class="apidocCodeKeywordSpan">model</span>(&#x27;User&#x27;, UserSchema);
+```
+
+Finally, we can assign roles to our users and control their access to system resources:
+
+```javascript
+var User = require(&#x27;user&#x27;)
+, user;
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Permission.findOrCreate" id="apidoc.module.mongoose-rbac.Permission.findOrCreate">module mongoose-rbac.Permission.findOrCreate</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission.findOrCreate.findOrCreate" id="apidoc.element.mongoose-rbac.Permission.findOrCreate.findOrCreate">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>findOrCreate
+        <span class="apidocSignatureSpan">(params, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">findOrCreate = function (params, callback) {
+  var that = this;
+
+  function findOrCreateOne(params, callback) {
+    that.findOne(params, function (err, permission) {
+      if (err) return callback(err);
+      if (permission) return callback(null, permission);
+      that.create(params, callback);
+    });
+  }
+
+  if (Array.isArray(params)) {
+    var permissions = [];
+    async.forEachSeries(params, function (param, next) {
+      findOrCreateOne(param, function (err, permission) {
+        permissions.push(permission);
+        next(err);
+      });
+    }, function (err) {
+      callback.apply(null, [err].concat(permissions));
+    });
+  }
+  else {
+    findOrCreateOne(params, callback);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Permission.model" id="apidoc.module.mongoose-rbac.Permission.model">module mongoose-rbac.Permission.model</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Permission.model.model" id="apidoc.element.mongoose-rbac.Permission.model.model">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Permission.</span>model
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(name) {
+  return this.db.model(name);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+UserSchema = mongoose.Schema({
+username: String,
+passwordHash: String
+});
+
+UserSchema.plugin(rbac.plugin);
+
+module.exports = mongoose.<span class="apidocCodeKeywordSpan">model</span>(&#x27;User&#x27;, UserSchema);
+```
+
+Finally, we can assign roles to our users and control their access to system resources:
+
+```javascript
+var User = require(&#x27;user&#x27;)
+, user;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Role" id="apidoc.module.mongoose-rbac.Role">module mongoose-rbac.Role</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.Role" id="apidoc.element.mongoose-rbac.Role.Role">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>Role
+        <span class="apidocSignatureSpan">(doc, fields, skipId)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(doc, fields, skipId) {
+  if (!(this instanceof model))
+    return new model(doc, fields, skipId);
+  Model.call(this, doc, fields, skipId);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.model" id="apidoc.element.mongoose-rbac.Role.model">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Role.</span>model
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model(name) {
+  return this.db.model(name);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+UserSchema = mongoose.Schema({
+username: String,
+passwordHash: String
+});
+
+UserSchema.plugin(rbac.plugin);
+
+module.exports = mongoose.<span class="apidocCodeKeywordSpan">model</span>(&#x27;User&#x27;, UserSchema);
+```
+
+Finally, we can assign roles to our users and control their access to system resources:
+
+```javascript
+var User = require(&#x27;user&#x27;)
+, user;
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Role.prototype" id="apidoc.module.mongoose-rbac.Role.prototype">module mongoose-rbac.Role.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.can" id="apidoc.element.mongoose-rbac.Role.prototype.can">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>can
+        <span class="apidocSignatureSpan">(action, subject, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">can = function (action, subject, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ALL, [[action, subject]], done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+user.addRole(&#x27;admin&#x27;, function (err) {});
+
+user.hasRole(&#x27;admin&#x27;, function (err, isAdmin) {
+  console.log(isAdmin); // true
+});
+
+user.<span class="apidocCodeKeywordSpan">can</span>(&#x27;create&#x27;, &#x27;Post&#x27;, function (err, can) {
+  if (can) {
+    // ok
+  }
+  else {
+    // insufficient privileges
+  }
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.canAll" id="apidoc.element.mongoose-rbac.Role.prototype.canAll">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAll
+        <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">canAll = function (actionsAndSubjects, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ALL, actionsAndSubjects, done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.canAny" id="apidoc.element.mongoose-rbac.Role.prototype.canAny">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAny
+        <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">canAny = function (actionsAndSubjects, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ANY, actionsAndSubjects, done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    // ok
+  }
+  else {
+    // insufficient privileges
+  }
+});
+
+user.<span class="apidocCodeKeywordSpan">canAny</span>([[&#x27;read&#x27;, &#x27;Post&#x27;], [&#x27;create&#x27;, &#x27;Post&#x27
+;]], function (err, canReadOrCreate) {
+  if (canReadOrCreate) {
+    // ok
+  }
+  else {
+    // insufficient privileges
+  }
+});
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Role.prototype.can" id="apidoc.module.mongoose-rbac.Role.prototype.can">module mongoose-rbac.Role.prototype.can</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.can.can" id="apidoc.element.mongoose-rbac.Role.prototype.can.can">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>can
+        <span class="apidocSignatureSpan">(action, subject, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">can = function (action, subject, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ALL, [[action, subject]], done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+user.addRole(&#x27;admin&#x27;, function (err) {});
+
+user.hasRole(&#x27;admin&#x27;, function (err, isAdmin) {
+  console.log(isAdmin); // true
+});
+
+user.<span class="apidocCodeKeywordSpan">can</span>(&#x27;create&#x27;, &#x27;Post&#x27;, function (err, can) {
+  if (can) {
+    // ok
+  }
+  else {
+    // insufficient privileges
+  }
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Role.prototype.canAll" id="apidoc.module.mongoose-rbac.Role.prototype.canAll">module mongoose-rbac.Role.prototype.canAll</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.canAll.canAll" id="apidoc.element.mongoose-rbac.Role.prototype.canAll.canAll">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAll
+        <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">canAll = function (actionsAndSubjects, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ALL, actionsAndSubjects, done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.Role.prototype.canAny" id="apidoc.module.mongoose-rbac.Role.prototype.canAny">module mongoose-rbac.Role.prototype.canAny</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.Role.prototype.canAny.canAny" id="apidoc.element.mongoose-rbac.Role.prototype.canAny.canAny">
+        function <span class="apidocSignatureSpan">mongoose-rbac.Role.prototype.</span>canAny
+        <span class="apidocSignatureSpan">(actionsAndSubjects, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">canAny = function (actionsAndSubjects, done) {
+  mongoose.model(&#x27;Role&#x27;).findById(this._id, function (err, role) {
+    if (err) return done(err);
+    doCan.call(role, CAN_ANY, actionsAndSubjects, done);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    // ok
+  }
+  else {
+    // insufficient privileges
+  }
+});
+
+user.<span class="apidocCodeKeywordSpan">canAny</span>([[&#x27;read&#x27;, &#x27;Post&#x27;], [&#x27;create&#x27;, &#x27;Post&#x27
+;]], function (err, canReadOrCreate) {
+  if (canReadOrCreate) {
+    // ok
+  }
+  else {
+    // insufficient privileges
+  }
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.init" id="apidoc.module.mongoose-rbac.init">module mongoose-rbac.init</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.init.init" id="apidoc.element.mongoose-rbac.init.init">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>init
+        <span class="apidocSignatureSpan">(rolesAndPermissions, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function init(rolesAndPermissions, done) {
+  var count = Object.keys(rolesAndPermissions).length
+    , roles = []
+    , promise = new mongoose.Promise(done);
+  for (var name in rolesAndPermissions) {
+    var len, role;
+    // Convert [action, subject] arrays to objects
+    len = rolesAndPermissions[name].length;
+    for (var i = 0; i &#x3c; len; i++) {
+      if (Array.isArray(rolesAndPermissions[name][i])) {
+        rolesAndPermissions[name][i] = {
+          action: rolesAndPermissions[name][i][0],
+          subject: rolesAndPermissions[name][i][1]
+        };
+      }
+    }
+    // Create role
+    role = new Role({ name: name });
+    roles.push(role);
+    role.save(function (err, role) {
+      if (err) return promise.error(err);
+      // Create role&#x27;s permissions if they do not exist
+      Permission.findOrCreate(rolesAndPermissions[role.name], function (err) {
+        if (err) return promise.error(err);
+        // Add permissions to role
+        role.permissions = Array.prototype.slice.call(arguments, 1);
+        // Save role
+        role.save(function (err) {
+          if (err) return promise.error(err);
+          --count || done.apply(null, [err].concat(roles));
+        });
+      });
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Alternatively we can use `init` to easily bootstrap roles and permissions:
+
+```javascript
+// permissions.js
+
+var rbac = require(&#x27;mongoose-rbac&#x27;);
+
+rbac.<span class="apidocCodeKeywordSpan">init</span>({
+admin: [
+  [&#x27;create&#x27;, &#x27;Post&#x27;],
+  [&#x27;read&#x27;, &#x27;Post&#x27;],
+  [&#x27;update&#x27;, &#x27;Post&#x27;],
+  [&#x27;delete&#x27;, &#x27;Post&#x27;]
+],
+readonly: [
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mongoose-rbac.plugin" id="apidoc.module.mongoose-rbac.plugin">module mongoose-rbac.plugin</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mongoose-rbac.plugin.plugin" id="apidoc.element.mongoose-rbac.plugin.plugin">
+        function <span class="apidocSignatureSpan">mongoose-rbac.</span>plugin
+        <span class="apidocSignatureSpan">(schema, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function plugin(schema, options) {
+  options || (options = {});
+
+  schema.add({
+    roles: [{ type: mongoose.Schema.Types.ObjectId, ref: &#x27;Role&#x27; }]
+  });
+
+  schema.methods.hasRole = function (role, done) {
+    var obj = this;
+    resolveRole(role, function (err, role) {
+      if (err) return done(err);
+      var hasRole = false;
+      obj.roles.forEach(function (existing) {
+        if ((existing._id &#x26;&#x26; existing._id.equals(role._id)) ||
+              (existing.toString() === role.id)) {
+          hasRole = true;
+        }
+      });
+      done(null, hasRole);
+    });
+  };
+
+  schema.methods.addRole = function (role, done) {
+    var obj = this;
+    resolveRole(role, function (err, role) {
+      if (err) return done(err);
+      obj.hasRole(role, function (err, has) {
+        if (err) return done(err);
+        if (has) return done(null, obj);
+        obj.roles = [role._id].concat(obj.roles);
+        obj.save(done);
+      });
+    });
+  };
+
+  schema.methods.removeRole = function (role, done) {
+    var obj = this;
+    resolveRole(role, function (err, role) {
+      obj.hasRole(role.name, function (err, has) {
+        if (err) return done(err);
+        if (!has) return done(null);
+        var index = obj.roles.indexOf(role._id);
+        obj.roles.splice(index, 1);
+        obj.save(done);
+      });
+    });
+  };
+
+  schema.methods.can = function (action, subject, done) {
+    var obj = this;
+    obj.populate(&#x27;roles&#x27;, function (err, obj) {
+      if (err) return done(err);
+      var hasPerm = false;
+      if (obj.roles) {
+        async.forEachSeries(obj.roles, function (role, next) {
+          role.can(action, subject, function (err, has) {
+            if (err) return next(err);
+            if (has) hasPerm = true;
+            next();
+          });
+        }, function (err) {
+          done(err, hasPerm);
+        });
+      }
+      else {
+        done(null, hasPerm);
+      }
+    });
+  };
+
+  schema.methods.canAll = function (actionsAndSubjects, done) {
+    var obj = this;
+    obj.populate(&#x27;roles&#x27;, function (err, obj) {
+      if (err) return done(err);
+      var count = 0, hasAll = false;
+      if (obj.roles) {
+        async.forEachSeries(actionsAndSubjects, function (as, nextPerm) {
+          var found = false;
+          async.forEachSeries(obj.roles, function (role, nextRole) {
+            role.can(as[0], as[1], function (err, has) {
+              if (err) return nextRole(err);
+              if (!found &#x26;&#x26; has) {
+                found = true;
+                count++;
+              }
+              nextRole();
+            });
+          }, function (err) {
+            nextPerm(err);
+          });
+        }, function (err) {
+          hasAll = (count === actionsAndSubjects.length);
+          done(err, hasAll);
+        });
+      }
+      else {
+        done(null, hasAll);
+      }
+    });
+  };
+
+  schema.methods.canAny = function (actionsAndSubjects, done) {
+    var obj = this;
+    obj.populate(&#x27;roles&#x27;, function (err, obj) {
+      if (err) return done(err);
+      var hasAny = false;
+      if (obj.roles) {
+        var iter = 0;
+        async.until(
+          function () {
+            return hasAny || iter === obj.roles.length;
+          },
+          function (callback) {
+            obj.roles[iter].canAny(actionsAndSubjects, function (err, has) {
+              if (err) return callback(err);
+              if (has) hasAny = true;
+              iter++;
+              callback();
+            });
+          },
+          function (err) {
+            done(err, hasAny);
+          });
+      }
+      else {
+        done(null, hasAny);
+      }
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  , User;
+
+UserSchema = mongoose.Schema({
+  username: String,
+  passwordHash: String
+});
+
+UserSchema.<span class="apidocCodeKeywordSpan">plugin</span>(rbac.plugin);
+
+module.exports = mongoose.model(&#x27;User&#x27;, UserSchema);
+```
+
+Finally, we can assign roles to our users and control their access to system resources:
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
