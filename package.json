@@ -1,1 +1,39 @@
-{     "devDependencies": {         "mongoose-rbac": "*",         "electron-lite": "kaizhu256/node-electron-lite#alpha",         "utility2": "kaizhu256/node-utility2#alpha"     },     "name":"npmdoc-mongoose-rbac",     "homepage": "https://github.com/npmdoc/node-npmdoc-mongoose-rbac",     "repository": {         "type": "git",         "url": "https://github.com/npmdoc/node-npmdoc-mongoose-rbac.git"     },     "scripts": {         "build-ci": "utility2 shReadmeTest build_ci.sh"     },     "version": "0.0.1" }
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "api documentation for [mongoose-rbac (v0.1.3)](https://github.com/bryandragon/mongoose-rbac) [![npm package](https://img.shields.io/npm/v/npmdoc-mongoose-rbac.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongoose-rbac) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongoose-rbac.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongoose-rbac)",
+    "devDependencies": {
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "mongoose-rbac": "*",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-mongoose-rbac",
+    "keywords": [
+        "documentation",
+        "mongoose-rbac"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_mongoose_rbac.js",
+    "name": "npmdoc-mongoose-rbac",
+    "nameAlias": "npmdoc_mongoose_rbac",
+    "nameOriginal": "npmdoc-mongoose-rbac",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmdoc/node-npmdoc-mongoose-rbac.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+        "start": "PORT=${PORT:-8080} utility2 start test.js",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+    },
+    "version": "0.0.2"
+}
