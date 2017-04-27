@@ -1,4 +1,7 @@
-# api documentation for  [mongoose-rbac (v0.1.3)](https://github.com/bryandragon/mongoose-rbac)  [![npm package](https://img.shields.io/npm/v/npmdoc-mongoose-rbac.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongoose-rbac) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongoose-rbac.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongoose-rbac)
+# npmdoc-mongoose-rbac
+
+#### basic api documentation for  [mongoose-rbac (v0.1.3)](https://github.com/bryandragon/mongoose-rbac)  [![npm package](https://img.shields.io/npm/v/npmdoc-mongoose-rbac.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mongoose-rbac) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mongoose-rbac.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mongoose-rbac)
+
 #### Role-based access control for mongoose apps.
 
 [![NPM](https://nodei.co/npm/mongoose-rbac.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/mongoose-rbac)
@@ -64,7 +67,8 @@
     "scripts": {
         "test": "make test"
     },
-    "version": "0.1.3"
+    "version": "0.1.3",
+    "bin": {}
 }
 ```
 
